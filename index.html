@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hostel Management System</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+
+<body class="bg-gray-100">
+  <!-- NAVBAR -->
+  <nav class="bg-blue-900 text-white">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-5 py-4">
+      <div class="text-xl text-blue-200 font-bold flex items-center gap-2">
+        <i class="fas fa-building icon"></i> Hostel Management
+      </div>
+
+      <!-- Hamburger -->
+      <button id="menuBtn" class="md:hidden border-2 border-gray-500 rounded-lg p-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+
+      <!-- Desktop Menu -->
+      <ul class="hidden md:flex gap-6 font-medium">
+        <li><a href="index.html" class="font-bold text-white hover:border-b-2 border-white pb-1">Home</a></li>
+        <li><a href="room_allotment.html" class="font-bold text-white hover:border-b-2 border-white pb-1">Room Allocation</a></li>
+        <li><a href="grievance.html" class="font-bold text-white hover:border-b-2 border-white pb-1">Grievance</a></li>
+        <li><a href="contact.html" class="font-bold text-white hover:border-b-2 border-white pb-1">Contact</a></li>
+        <li><a href="admin.html" class="font-bold text-white hover:border-b-2 border-white pb-1">Admin</a></li>
+       <li>
+            <button onclick="openModal()"
+                class="font-bold bg-white text-blue-900 px-4 py-1 rounded hover:underline">
+                Login
+            </button>
+          </li>
+      </ul>
+    </div>
+
+    <!-- Mobile Menu (REFERENCE STYLE) -->
+    <div id="mobileMenu" class="hidden px-6 pb-6 md:hidden">
+      <ul class="space-y-6 text-gray-700 text-lg">
+        <li><a href="index.html" class=" text-white hover:border-b-2 border-white pb-1">Home</a></li>
+        <li><a href="room_allotment.html" class="text-white hover:border-b-2 border-white pb-1">Room Allocation</a></li>
+        <li><a href="#" class="text-white hover:border-b-2 border-white pb-1">Grievance</a></li>
+        <li><a href="contact.html" class="text-white hover:border-b-2 border-white pb-1">Contact</a></li>
+        <li><a href="#" class="text-white hover:border-b-2 border-white pb-1">Admin</a></li>
+      </ul>
+
+      <!-- Login Button -->
+            <button onclick="openModal()"
+                class="w-full mt-6 font-bold bg-white text-blue-900 py-3 rounded-lg text-lg hover:underline">
+                Login
+            </button>
+    </div>
+  </nav>
+ 
+ <!-- Modal -->
+    <div id="loginModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-xl shadow-lg w-full max-w-md relative animate-scale">
+
+            <!-- Close Button -->
+            <button onclick="closeModal()" class="absolute top-3 right-4 text-3xl text-gray-500 hover:text-red-500">
+                &times;
+            </button>
+
+            <!-- Avatar -->
+            <div class="flex justify-center mt-8">
+                <img src="image4.png" class="w-24 h-24 rounded-full border" alt="avatar">
+            </div>
+
+            <!-- Form -->
+            <form class="px-8 py-6 space-y-4">
+
+                <div>
+                    <label class="block font-medium">Username</label>
+                    <input type="text" placeholder="Enter Username"
+                        class="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 outline-none">
+                </div>
+
+                <div>
+                    <label class="block font-medium">Password</label>
+                    <input type="password" placeholder="Enter Password"
+                        class="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 outline-none">
+                </div>
+
+                <button type="submit" class="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700">
+                    Login
+                </button>
+
+                <div class="flex items-center justify-between text-sm">
+                    <label class="flex items-center gap-2">
+                        <input type="checkbox" checked>
+                        Remember me
+                    </label>
+                    <a href="#" class="text-blue-600 hover:underline">Forgot password?</a>
+                </div>
+            </form>
+            <div class="bg-gray-100 px-8 py-4 rounded-b-xl">
+                <button onclick="closeModal()" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+  <!-- HERO SECTION -->
+  <section
+    class="bg-gradient-to-r from-blue-800 to-blue-600 text-white w-full h-[60vh] min-h-[350px] bg-cover bg-center bg-no-repeat"
+    style="background-image: url('image3.png');">
+    <div class="max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <h1 class="text-4xl font-bold mb-4">
+          Hostel <span class="text-blue-200">Management</span> & <br> Grievance Control System
+        </h1>
+
+        <p class="mb-6 text-gray-200">
+          Efficient hostel management & grievance resolution
+        </p>
+        <div class="flex gap-4">
+          <button class="bg-white text-blue-800 px-6 py-2 rounded font-semibold">
+            Learn More
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE CARDS -->
+  <section class="max-w-7xl mx-auto px-6 -mt-12">
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-white p-6 rounded-xl hover:shadow-lg transition-shadow duration-300">
+        <h3 class="font-bold text-lg">🛏 Room Allocation</h3>
+        <p class="text-sm text-gray-600 mt-2">
+          Manage room assignments & availability.
+        </p>
+      </div>
+      <div class="bg-white p-6 rounded-xl hover:shadow-lg transition-shadow duration-300">
+        <h3 class="font-bold text-lg">🚨 Grievance Management</h3>
+        <p class="text-sm text-gray-600 mt-2">
+          Submit & track complaints easily.
+        </p>
+      </div>
+      <div class="bg-white p-6 rounded-xl hover:shadow-lg transition-shadow duration-300">
+        <h3 class="font-bold text-lg">⚙ Admin Dashboard</h3>
+        <p class="text-sm text-gray-600 mt-2">
+          Control and monitor hostel activities.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STUDENT & ADMIN -->
+  <section class="max-w-7xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-8">
+
+    <!-- Students Card -->
+    <div class="bg-white rounded-xl shadow p-6  hover:shadow-lg transition-shadow duration-300">
+      <div class="flex items-center justify-between gap-6">
+
+        <!-- Text -->
+        <div>
+          <h3 class="text-xl font-bold mb-4">For Students</h3>
+          <ul class="space-y-2 text-gray-700">
+            <li>✔ Apply for Rooms</li>
+            <li>✔ Lodge Complaints</li>
+            <li>✔ Track Status</li>
+          </ul>
+          <button class="mt-4 bg-orange-500 text-white px-4 py-2 rounded">
+            Student Portal
+          </button>
+        </div>
+
+        <!-- Image -->
+        <div class="w-48 h-80 bg-cover bg-center rounded-lg shrink-0" style="background-image: url('image1.png');">
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Admin Card -->
+    <div class="bg-white rounded-xl shadow p-6  hover:shadow-lg transition-shadow duration-300">
+      <div class="flex items-center justify-between gap-6">
+
+        <!-- Text -->
+        <div>
+          <h3 class="text-xl font-bold mb-4">For Admins</h3>
+          <ul class="space-y-2 text-gray-700">
+            <li>✔ Manage Allocations</li>
+            <li>✔ Resolve Grievances</li>
+            <li>✔ View Reports</li>
+            <li>✔ Notices</li>
+          </ul>
+          <button class="mt-4 bg-blue-700 text-white px-4 py-2 rounded">
+            Admin Login
+          </button>
+        </div>
+
+        <!-- Image -->
+        <div class="w-48 h-80 bg-cover bg-center rounded-lg shrink-0" style="background-image: url('image2.png');">
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- ANNOUNCEMENTS -->
+  <section class="bg-blue-50 py-4">
+    <div class="max-w-5xl mx-auto px-6 text-sm text-blue-800">
+      <i class="fas fa-volume-up icon"></i> <strong>Latest Announcements:</strong>
+      The Announcements are now live! Check out the latest updates in the Admin Dashboard.
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-blue-900 text-white mt-10">
+    <div class="max-w-7xl mx-auto px-6 py-10 grid md:grid-cols-4 gap-6 text-sm">
+      <div>
+        <h4 class="font-bold mb-2">About</h4>
+        <p>Efficient hostel management and grievance control system.</p>
+      </div>
+      <div>
+        <h4 class="font-bold mb-2">Quick Links</h4>
+        <p>Home</p>
+        <p>Room Allocation</p>
+        <p>Grievance</p>
+        <p>Contact</p>
+      </div>
+      <div>
+        <h4 class="font-bold mb-2">Contact</h4>
+        <p>Email: khushbusuwalka2006@gmail.com</p>
+        <p>Phone: +91 9929823850</p>
+        <p>Email: kanishkajoshi206@gmail.com</p>
+        <p>Phone: +91 7300427924</p>
+      </div>
+      <div>
+        <h4 class="font-bold mb-2">Follow Us</h4>
+        <p><a href="https://www.facebook.com" target="_blank" class="facebook-icon">
+            <i class="fab fa-facebook"></i>
+          </a> |
+          <a href="https://twitter.com" target="_blank" class="twitter-icon">
+            <i class="fab fa-twitter"></i>
+          </a> |
+          <a href="https://www.instagram.com" target="_blank" class="instagram-icon">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </p>
+      </div>
+    </div>
+    <div class="text-center text-xs bg-blue-950 py-3">
+      © 2026 Hostel Management System. All rights reserved.
+    </div>
+  </footer>
+  <script>
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    menuBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+    });
+ //modal functions
+        function openModal() {
+            document.getElementById("loginModal").classList.remove("hidden");
+        }
+
+        function closeModal() {
+            document.getElementById("loginModal").classList.add("hidden");
+        }
+
+        window.onclick = function (e) {
+            const modal = document.getElementById("loginModal");
+            if (e.target === modal) closeModal();
+        };
+
+
+  </script>
+
+
+</body>
+
+</html>

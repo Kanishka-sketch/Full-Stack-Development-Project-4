@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grievance Management</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100">
+    <!-- NAVBAR -->
+    <nav class="bg-blue-900 text-white">
+        <div class="max-w-7xl mx-auto flex items-center justify-between px-5 py-4">
+            <div class="text-xl text-blue-200 font-bold flex items-center gap-2">
+                <i class="fas fa-building icon"></i> Hostel Management
+            </div>
+
+            <!-- Hamburger -->
+            <button id="menuBtn" class="md:hidden border-2 border-gray-500 rounded-lg p-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+
+            <!-- Desktop Menu -->
+            <ul class="hidden md:flex gap-6 font-medium">
+                <li><a href="index.html" class="font-bold text-white hover:border-b-2 border-white pb-1">Home</a></li>
+                <li><a href="room_allotment.html" class="font-bold text-white hover:border-b-2 border-white pb-1">Room Allocation</a></li>
+                <li><a href="grievance.html" class="font-bold text-white hover:border-b-2 border-white pb-1">Grievance</a></li>
+                <li><a href="contact.html" class="font-bold text-white hover:border-b-2 border-white pb-1">Contact</a>
+                </li>
+                <li><a href="admin.html" class="font-bold text-white hover:border-b-2 border-white pb-1">Admin</a></li>
+                <li>
+                    <button onclick="openModal()"
+                        class="font-bold bg-white text-blue-900 px-4 py-1 rounded hover:underline">
+                        Login
+                    </button>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Mobile Menu (REFERENCE STYLE) -->
+        <div id="mobileMenu" class="hidden px-6 pb-6 md:hidden">
+            <ul class="space-y-6 text-gray-700 text-lg">
+                <li><a href="index.html" class="text-white hover:border-b-2 border-white pb-1">Home</a></li>
+                <li><a href="room_allotment.html" class="text-white hover:border-b-2 border-white pb-1">Room Allocation</a></li>
+                <li><a href="grievance.html" class="text-white hover:border-b-2 border-white pb-1">Grievance</a></li>
+                <li><a href="contact.html" class="text-white hover:border-b-2 border-white pb-1">Contact</a></li>
+                <li><a href="admin.html" class="text-white hover:border-b-2 border-white pb-1">Admin</a></li>
+            </ul>
+
+            <!-- Login Button -->
+            <button onclick="openModal()"
+                class="w-full mt-6 font-bold bg-white text-blue-900 py-3 rounded-lg text-lg hover:underline">
+                Login
+            </button>
+        </div>
+    </nav>
+    <!-- Modal -->
+    <div id="loginModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-xl shadow-lg w-full max-w-md relative animate-scale">
+
+            <!-- Close Button -->
+            <button onclick="closeModal()" class="absolute top-3 right-4 text-3xl text-gray-500 hover:text-red-500">
+                &times;
+            </button>
+
+            <!-- Avatar -->
+            <div class="flex justify-center mt-8">
+                <img src="image4.png" class="w-24 h-24 rounded-full border" alt="avatar">
+            </div>
+
+            <!-- Form -->
+            <form class="px-8 py-6 space-y-4">
+
+                <div>
+                    <label class="block font-medium">Username</label>
+                    <input type="text" placeholder="Enter Username"
+                        class="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 outline-none">
+                </div>
+
+                <div>
+                    <label class="block font-medium">Password</label>
+                    <input type="password" placeholder="Enter Password"
+                        class="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 outline-none">
+                </div>
+
+                <button type="submit" class="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700">
+                    Login
+                </button>
+
+                <div class="flex items-center justify-between text-sm">
+                    <label class="flex items-center gap-2">
+                        <input type="checkbox" checked>
+                        Remember me
+                    </label>
+                    <a href="#" class="text-blue-600 hover:underline">Forgot password?</a>
+                </div>
+            </form>
+            <div class="bg-gray-100 px-8 py-4 rounded-b-xl">
+                <button onclick="closeModal()" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page Heading -->
+    <section class="max-w-7xl mx-auto mt-6 mb-6 rounded-xl 
+    bg-blue-900 py-10 text-center text-blue-200">
+        <h1 class="text-2xl font-bold tracking-wide">Grievance Management</h1>
+        <p class="mt-3 mb-3 text-lg text-white">
+            Submit and track your grievances
+        </p>
+    </section>
+
+
+    <!-- Main Container -->
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+            <!-- Submit Grievance Card -->
+            <div class="bg-white rounded-xl shadow-md p-8">
+                <h2 class="text-xl font-semibold text-gray-800 mb-6">
+                    Submit Grievance
+                </h2>
+
+                <form class="space-y-5">
+                    <!-- Student Name -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">
+                            Student Name <span class="text-red-500">*</span>
+                        </label>
+                        <input type="text" placeholder="Enter your name"
+                            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            required />
+                    </div>
+
+                    <!-- Student room no. -->
+                     <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">
+                            Student Room No. <span class="text-red-500">*</span>
+                        </label>
+                        <input type="text" placeholder="Enter your room no."
+                            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            required />
+                    </div>
+
+
+                    <!-- Student ID -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">
+                            Student ID <span class="text-red-500">*</span>
+                        </label>
+                        <input type="text" placeholder="Enter your student ID"
+                            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            required />
+                    </div>
+
+                    <!-- Category -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">
+                            Category <span class="text-red-500">*</span>
+                        </label>
+                        <select
+                            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            required>
+                            <option value="">Select Category</option>
+                            <option>Hostel</option>
+                            <option>Mess</option>
+                            <option>Maintenance</option>
+                            <option>Security</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+
+                    <!-- Description -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">
+                            Description <span class="text-red-500">*</span>
+                        </label>
+                        <textarea rows="5" placeholder="Describe your grievance in detail..."
+                            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            required></textarea>
+                    </div>
+
+                    <!-- Proof Upload -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">
+                            Upload Proof (Image)
+                        </label>
+
+                        <label id="proofLabel"
+                            class="flex items-center justify-center gap-2 cursor-pointer w-full px-4 py-2 border rounded-lg bg-white text-gray-700 transition">
+                            📎 Choose Image
+                            <input type="file" accept="image/*" class="hidden" onchange="proofSelected(this)" />
+                        </label>
+
+                        <p class="text-xs text-gray-500 mt-1">
+                            Supported formats: JPG, PNG (Max 5MB)
+                        </p>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit"
+                        class="w-full bg-blue-900 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+                        Submit Grievance
+                    </button>
+                </form>
+            </div>
+
+            <!-- Your Grievances Card -->
+            <div class="bg-white rounded-xl shadow-md p-8 flex flex-col justify-center items-center text-center">
+                <h2 class="text-xl font-semibold text-gray-800 mb-4">
+                    Your Grievances
+                </h2>
+                <p class="text-gray-500">
+                    No grievances submitted yet
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-blue-900 text-white mt-10">
+        <div class="max-w-7xl mx-auto px-6 py-10 grid md:grid-cols-4 gap-6 text-sm">
+            <div>
+                <h4 class="font-bold mb-2">About</h4>
+                <p>Efficient hostel management and grievance control system.</p>
+            </div>
+            <div>
+                <h4 class="font-bold mb-2">Quick Links</h4>
+                <p>Home</p>
+                <p>Room Allocation</p>
+                <p>Grievance</p>
+                <p>Contact</p>
+            </div>
+            <div>
+                <h4 class="font-bold mb-2">Contact</h4>
+                <p>Email: khushbusuwalka2006@gmail.com</p>
+                <p>Phone: +91 9929823850</p>
+                <p>Email: kanishkajoshi206@gmail.com</p>
+                <p>Phone: +91 7300427924</p>
+            </div>
+
+            <div>
+                <h4 class="font-bold mb-2">Follow Us</h4>
+                <p><a href="https://www.facebook.com" target="_blank" class="facebook-icon">
+                        <i class="fab fa-facebook"></i>
+                    </a> |
+                    <a href="https://twitter.com" target="_blank" class="twitter-icon">
+                        <i class="fab fa-twitter"></i>
+                    </a> |
+                    <a href="https://www.instagram.com" target="_blank" class="instagram-icon">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </p>
+            </div>
+        </div>
+        <div class="text-center text-xs bg-blue-950 py-3">
+            © 2026 Hostel Management System. All rights reserved.
+        </div>
+    </footer>
+    <script>
+        const menuBtn = document.getElementById("menuBtn");
+        const mobileMenu = document.getElementById("mobileMenu");
+
+        menuBtn.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+        });
+
+        //file upload functions
+        function proofSelected(input) {
+            if (input.files.length > 0) {
+                const label = document.getElementById("proofLabel");
+                label.classList.remove("bg-white", "text-gray-700");
+                label.classList.add("bg-blue-200", "text-neutral-800", "font-semibold");
+                label.innerHTML = "✔ Proof Uploaded";
+            }
+        }
+
+        //modal functions
+        function openModal() {
+            document.getElementById("loginModal").classList.remove("hidden");
+        }
+
+        function closeModal() {
+            document.getElementById("loginModal").classList.add("hidden");
+        }
+
+        window.onclick = function (e) {
+            const modal = document.getElementById("loginModal");
+            if (e.target === modal) closeModal();
+        };
+
+    </script>
+
+    <!-- Animation -->
+    <style>
+        .animate-scale {
+            animation: scaleUp 0.3s ease;
+        }
+
+        @keyframes scaleUp {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+
+</body>
+
+</html>

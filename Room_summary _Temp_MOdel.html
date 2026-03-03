@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Hostel Room Arrangement</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#eef2f5;
+    padding:20px;
+}
+
+.container{
+    max-width:1100px;
+    margin:auto;
+    background:white;
+    padding:20px;
+    border-radius:8px;
+}
+
+h2{
+    text-align:center;
+}
+
+/* FLOOR BUTTONS */
+.floor-buttons{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin:20px 0;
+}
+
+.floor-buttons button{
+    padding:10px 20px;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+    background:#007bff;
+    color:white;
+    font-size:16px;
+}
+
+/* MODAL */
+.modal{
+    display:none;
+    position:fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background:rgba(0,0,0,0.5);
+}
+
+.modal-content{
+    background:white;
+    width:80%;
+    margin:60px auto;
+    padding:20px;
+    border-radius:8px;
+    position:relative;
+}
+
+.close{
+    position:absolute;
+    right:15px;
+    top:10px;
+    font-size:22px;
+    cursor:pointer;
+}
+
+/* SUMMARY */
+.summary{
+    display:flex;
+    gap:15px;
+    margin-bottom:15px;
+}
+
+.summary div{
+    padding:10px 15px;
+    border-radius:6px;
+    font-weight:bold;
+}
+
+.vacant{background:#d4edda;color:#155724;}
+.occupied{background:#f8d7da;color:#721c24;}
+
+/* ROOMS */
+.section-title{
+    margin-top:20px;
+    font-size:18px;
+    font-weight:bold;
+}
+
+.room-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:15px;
+    margin-top:10px;
+}
+
+.room{
+    border-radius:6px;
+    padding:10px;
+    color:white;
+}
+
+.room.vacant-room{background:#28a745;}
+.room.occupied-room{background:#dc3545;}
+
+.room h4{
+    margin:0 0 5px;
+}
+
+.student{
+    font-size:14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Hostel Room Arrangement</h2>
+
+    <div class="floor-buttons">
+        <button onclick="openFloor(1)">Floor 1</button>
+        <button onclick="openFloor(2)">Floor 2</button>
+        <button onclick="openFloor(3)">Floor 3</button>
+    </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">✖</span>
+        <h3 id="floorTitle"></h3>
+
+        <div class="summary">
+            <div class="vacant" id="vacantCount"></div>
+            <div class="occupied" id="occupiedCount"></div>
+        </div>
+
+        <div id="roomData"></div>
+    </div>
+</div>
+
+<script>
+const hostelData = {
+    1:{
+        double:[
+            {room:"101",students:[]},
+            {room:"102",students:[]},
+            {room:"103",students:["Rahul","Neha"]},
+            {room:"104",students:["Amit","Riya"]}
+        ],
+        triple:[
+            {room:"105",students:["Ankit","Vivek","Aditya"]},
+            {room:"106",students:["Priya","Anjali","Sonia"]},
+            {room:"107",students:["Rohit","Arjun"]},
+            {room:"108",students:[]}
+        ]
+    },
+    2:{
+        double:[
+            {room:"201",students:["Karan","Meena"]},
+            {room:"202",students:[]}
+        ],
+        triple:[
+            {room:"203",students:["Nitin","Sahil","Dev"]}
+        ]
+    },
+    3:{
+        double:[
+            {room:"301",students:[]}
+        ],
+        triple:[
+            {room:"302",students:["Pooja","Rashi","Kavya"]}
+        ]
+    }
+};
+
+function openFloor(floor){
+    document.getElementById("modal").style.display="block";
+    document.getElementById("floorTitle").innerText=`Floor ${floor} Room Details`;
+
+    let vacant=0, occupied=0;
+    let html="";
+
+    ["double","triple"].forEach(type=>{
+        html+=`<div class="section-title">${type.toUpperCase()} SEATER ROOMS</div>`;
+        html+=`<div class="room-grid">`;
+
+        hostelData[floor][type].forEach(r=>{
+            if(r.students.length===0){
+                vacant++;
+                html+=`
+                <div class="room vacant-room">
+                    <h4>Room ${r.room}</h4>
+                    Vacant
+                </div>`;
+            }else{
+                occupied++;
+                html+=`
+                <div class="room occupied-room">
+                    <h4>Room ${r.room}</h4>
+                    ${r.students.map(s=>`<div class="student">• ${s}</div>`).join("")}
+                </div>`;
+            }
+        });
+
+        html+="</div>";
+    });
+
+    document.getElementById("roomData").innerHTML=html;
+    document.getElementById("vacantCount").innerText="Vacant Rooms: "+vacant;
+    document.getElementById("occupiedCount").innerText="Occupied Rooms: "+occupied;
+}
+
+function closeModal(){
+    document.getElementById("modal").style.display="none";
+}
+</script>
+
+</body>
+</html>
