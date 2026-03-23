@@ -27,16 +27,16 @@
       <!-- Desktop Menu -->
       <ul class="hidden md:flex gap-6 font-medium">
         <li><a href="index.html" class="font-bold text-white hover:border-b-2 border-white pb-1">Home</a></li>
-        <li><a href="room_allotment.html" class="font-bold text-white hover:border-b-2 border-white pb-1">Room Allocation</a></li>
+        <li><a href="room_allotment.html" class="font-bold text-white hover:border-b-2 border-white pb-1">Room
+            Request</a></li>
         <li><a href="grievance.html" class="font-bold text-white hover:border-b-2 border-white pb-1">Grievance</a></li>
         <li><a href="contact.html" class="font-bold text-white hover:border-b-2 border-white pb-1">Contact</a></li>
         <li><a href="admin.html" class="font-bold text-white hover:border-b-2 border-white pb-1">Admin</a></li>
-       <li>
-            <button onclick="openModal()"
-                class="font-bold bg-white text-blue-900 px-4 py-1 rounded hover:underline">
-                Login
-            </button>
-          </li>
+        <li>
+          <button id="loginBtn" onclick="openModal()" class="font-bold bg-white text-blue-900 px-4 py-1 rounded hover:underline">
+            Login
+          </button>
+        </li>
       </ul>
     </div>
 
@@ -44,68 +44,78 @@
     <div id="mobileMenu" class="hidden px-6 pb-6 md:hidden">
       <ul class="space-y-6 text-gray-700 text-lg">
         <li><a href="index.html" class=" text-white hover:border-b-2 border-white pb-1">Home</a></li>
-        <li><a href="room_allotment.html" class="text-white hover:border-b-2 border-white pb-1">Room Allocation</a></li>
-        <li><a href="#" class="text-white hover:border-b-2 border-white pb-1">Grievance</a></li>
+        <li><a href="room_allotment.html" class="text-white hover:border-b-2 border-white pb-1">Room Request</a></li>
+        <li><a href="grievance.html" class="text-white hover:border-b-2 border-white pb-1">Grievance</a></li>
         <li><a href="contact.html" class="text-white hover:border-b-2 border-white pb-1">Contact</a></li>
-        <li><a href="#" class="text-white hover:border-b-2 border-white pb-1">Admin</a></li>
+        <li><a href="admin.html" class="text-white hover:border-b-2 border-white pb-1">Admin</a></li>
       </ul>
 
       <!-- Login Button -->
-            <button onclick="openModal()"
-                class="w-full mt-6 font-bold bg-white text-blue-900 py-3 rounded-lg text-lg hover:underline">
-                Login
-            </button>
+      <button id="loginBtn" onclick="openModal()"
+        class="font-bold bg-white text-blue-900 px-4 py-1 rounded hover:underline">
+        Login
+      </button>
     </div>
   </nav>
- 
- <!-- Modal -->
-    <div id="loginModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-        <div class="bg-white rounded-xl shadow-lg w-full max-w-md relative animate-scale">
 
-            <!-- Close Button -->
-            <button onclick="closeModal()" class="absolute top-3 right-4 text-3xl text-gray-500 hover:text-red-500">
-                &times;
-            </button>
+  <!-- Modal -->
+  <div id="loginModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div class="bg-white rounded-xl shadow-lg w-full max-w-md relative animate-scale">
 
-            <!-- Avatar -->
-            <div class="flex justify-center mt-8">
-                <img src="image4.png" class="w-24 h-24 rounded-full border" alt="avatar">
-            </div>
+      <!-- Close Button -->
+      <button onclick="closeModal()" class="absolute top-3 right-4 text-3xl text-gray-500 hover:text-red-500">
+        &times;
+      </button>
 
-            <!-- Form -->
-            <form class="px-8 py-6 space-y-4">
+      <!-- Avatar -->
+      <div class="flex justify-center mt-8">
+        <img src="image4.png" class="w-24 h-24 rounded-full border" alt="avatar">
+      </div>
 
-                <div>
-                    <label class="block font-medium">Username</label>
-                    <input type="text" placeholder="Enter Username"
-                        class="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 outline-none">
-                </div>
+      <!-- Form -->
+      <form class="px-8 py-6 space-y-4">
 
-                <div>
-                    <label class="block font-medium">Password</label>
-                    <input type="password" placeholder="Enter Password"
-                        class="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 outline-none">
-                </div>
-
-                <button type="submit" class="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700">
-                    Login
-                </button>
-
-                <div class="flex items-center justify-between text-sm">
-                    <label class="flex items-center gap-2">
-                        <input type="checkbox" checked>
-                        Remember me
-                    </label>
-                    <a href="#" class="text-blue-600 hover:underline">Forgot password?</a>
-                </div>
-            </form>
-            <div class="bg-gray-100 px-8 py-4 rounded-b-xl">
-                <button onclick="closeModal()" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
-                    Cancel
-                </button>
-            </div>
+        <div>
+          <label class="block font-medium">Username</label>
+          <input type="text" id="username" placeholder="Enter Username"
+            class="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 outline-none">
         </div>
+
+        <div>
+          <label class="block font-medium">Password</label>
+          <input type="password" id="password" placeholder="Enter Password"
+            class="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 outline-none">
+        </div>
+
+        <div>
+          <label class="block font-medium">Login As</label>
+          <select id="role" class="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 outline-none">
+            <option value="student">Student</option>
+            <option value="admin">Admin</option>
+          </select>
+        </div>
+
+
+        <button type="button" onclick="loginUser()"
+          class="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700">
+          Login
+        </button>
+
+        <div class="flex items-center justify-between text-sm">
+          <label class="flex items-center gap-2">
+            <input type="checkbox" checked>
+            Remember me
+          </label>
+          <a href="#" class="text-blue-600 hover:underline">Forgot password?</a>
+        </div>
+      </form>
+      <div class="bg-gray-100 px-8 py-4 rounded-b-xl">
+        <button onclick="closeModal()" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
+          Cancel
+        </button>
+      </div>
     </div>
+  </div>
 
 
   <!-- HERO SECTION -->
@@ -195,7 +205,7 @@
             <li>✔ Notices</li>
           </ul>
           <button class="mt-4 bg-blue-700 text-white px-4 py-2 rounded">
-            Admin Login
+            Admin Portal
           </button>
         </div>
 
@@ -258,26 +268,92 @@
   </footer>
   <script>
     const menuBtn = document.getElementById("menuBtn");
+    function loginUser() {
+
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+      const role = document.getElementById("role").value;
+
+      if (role === "admin" && username === "admin" && password === "1234") {
+
+        localStorage.setItem("userRole", "admin");
+
+        document.getElementById("loginBtn").innerText = "Logout";
+        document.getElementById("loginBtn").onclick = logout;
+
+        window.location.href = "admin.html";
+
+      }
+
+      else if (role === "student" && username === "student" && password === "1234") {
+
+        localStorage.setItem("userRole", "student");
+
+        document.getElementById("loginBtn").innerText = "Logout";
+        document.getElementById("loginBtn").onclick = logout;
+
+        window.location.href = "room_allotment.html";
+
+      }
+
+      else if (role === "student" && username === "student1" && password === "123") {
+
+        localStorage.setItem("userRole", "student");
+
+        document.getElementById("loginBtn").innerText = "Logout";
+        document.getElementById("loginBtn").onclick = logout;
+
+        window.location.href = "room_allotment.html";
+
+      }
+
+      else {
+
+        alert("Invalid username or password");
+
+      }
+
+    }
     const mobileMenu = document.getElementById("mobileMenu");
 
     menuBtn.addEventListener("click", () => {
       mobileMenu.classList.toggle("hidden");
     });
- //modal functions
-        function openModal() {
-            document.getElementById("loginModal").classList.remove("hidden");
-        }
+    //modal functions
+    function openModal() {
+      document.getElementById("loginModal").classList.remove("hidden");
+    }
 
-        function closeModal() {
-            document.getElementById("loginModal").classList.add("hidden");
-        }
+    function closeModal() {
+      document.getElementById("loginModal").classList.add("hidden");
+    }
 
-        window.onclick = function (e) {
-            const modal = document.getElementById("loginModal");
-            if (e.target === modal) closeModal();
-        };
+    window.onclick = function (e) {
+      const modal = document.getElementById("loginModal");
+      if (e.target === modal) closeModal();
+    };
+
+    // check login state when page loads
+    window.onload = function () {
+
+      const role = localStorage.getItem("userRole");
+
+      if (role) {
+
+        const btn = document.getElementById("loginBtn");
+
+        btn.innerText = "Logout";
+        btn.onclick = logout;
+
+      }
+
+    }
 
 
+    function logout() {
+      localStorage.removeItem("userRole");
+      window.location.href = "index.html";
+    }
   </script>
 
 
